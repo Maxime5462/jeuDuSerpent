@@ -87,7 +87,7 @@ window.onload = function () {
       }
     }
   }
-  document.onkeydown = function handleKeyDOwn (e) {
+  document.onkeydown = function handleKeyDown (e) {
     var key = e.keyCode
     var newDirection
     switch (key) {
@@ -108,5 +108,6 @@ window.onload = function () {
     }
 
     snakee.setDirection(newDirection)
+            
   }
 }
