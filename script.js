@@ -9,6 +9,8 @@ window.onload = function () {
   var widthInBlocks = canvasWidth / blockSize
   var heightInBlocks = canvasHeight / blockSize
   var score
+  var timeout
+  var factorSpeed = 1
 
   init()
 
@@ -27,6 +29,7 @@ window.onload = function () {
     snakee = new Snake([[6, 4], [5, 4], [4, 4]], 'right')
     applee = new Apple([10, 10])
     score = 0
+    delay = 100
     refreshCanvas()
   }
 
@@ -35,9 +38,12 @@ window.onload = function () {
 
     if (snakee.checkCollision()) {
       gameOver()
+      delay = 100
     } else {
       if (snakee.isEatingApple(applee)) {
         score++
+        factorSpeed = Math.round(score / 5 + 0.5)
+        console.log(factorSpeed)
         snakee.ateApple = true
         do { applee.setNewPosition() }
         while (applee.isOnSnake(snakee))
@@ -46,7 +52,7 @@ window.onload = function () {
       drawScore()
       snakee.draw()
       applee.draw()
-      setTimeout(refreshCanvas, delay)
+      timeout = setTimeout(refreshCanvas, delay / factorSpeed)
     }
   }
 
@@ -72,6 +78,7 @@ window.onload = function () {
     snakee = new Snake([[6, 4], [5, 4], [4, 4]], 'right')
     applee = new Apple([10, 10])
     score = 0
+    clearTimeout(timeout)
     refreshCanvas()
   }
 
