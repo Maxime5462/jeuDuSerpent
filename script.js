@@ -17,9 +17,10 @@ window.onload = function () {
     canvas.width = canvasWidth
     canvas.height = canvasHeight
     canvas.style.border = '30px solid blue'
+    canvas.style.borderStyle = 'solid'
     canvas.style.margin = '50px auto'
     canvas.style.display = 'block'
-    canvas.style.backgroundColor = 'green'
+    canvas.style.backgroundColor = 'lightblue'
 
     document.body.appendChild(canvas)
     ctx = canvas.getContext('2d')
@@ -52,7 +53,7 @@ window.onload = function () {
   function gameOver () {
     ctx.save()
     ctx.font = 'bold 70px sans-serif'
-    ctx.fillStyle = 'orange'
+    ctx.fillStyle = 'lightgreen'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     ctx.strokeStyle = 'black'
@@ -84,11 +85,13 @@ window.onload = function () {
     ctx.save()
     ctx.font = 'bold 200px sans-serif'
     ctx.fillStyle = 'yellow'
+    ctx.strokeStyle = 'black'
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     var centreX = canvasWidth / 2
     var centreY = canvasHeight / 2
     ctx.fillText(score.toString(), centreX, centreY)
+    ctx.strokeText(score.toString(), centreX, centreY)
     ctx.restore()
   }
 
@@ -98,7 +101,7 @@ window.onload = function () {
     this.ateApple = false
     this.draw = function () {
       ctx.save()
-      ctx.fillStyle = '#ff0000'
+      ctx.fillStyle = 'red'
       for (var i = 0; i < this.body.length; i++) {
         drawBlock(ctx, this.body[i])
       }
@@ -186,7 +189,7 @@ window.onload = function () {
     this.position = position
     this.draw = function () {
       ctx.save()
-      ctx.fillStyle = 'pink'
+      ctx.fillStyle = 'green'
       ctx.beginPath()
       var radius = blockSize / 2
       var x = this.position[0] * blockSize + radius
