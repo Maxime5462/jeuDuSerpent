@@ -10,7 +10,7 @@ window.onload = function () {
   var heightInBlocks = canvasHeight / blockSize
   var score
   var timeout
-  var factorSpeed
+  var factorSpeed = 1
 
   init()
 
